@@ -347,6 +347,23 @@ class AsyncTwitterImpl extends TwitterBaseImpl implements AsyncTwitter {
     }
 
     @Override
+    public void unretweetStatus(final long statusId) {
+        getDispatcher().invokeLater(new AsyncTask(RETWEET_STATUS, listeners) {
+            @Override
+            public void invoke(List<TwitterListener> listeners) throws TwitterException {
+                Status status = twitter.unRetweetStatus(statusId);
+                for (TwitterListener listener : listeners) {
+                    try {
+                        listener.unRetweetedStatus(status);
+                    } catch (Exception e) {
+                        logger.warn("Exception at unretweetStatus", e);
+                    }
+                }
+            }
+        });
+    }
+
+    @Override
     public void getOEmbed(final OEmbedRequest req) {
         getDispatcher().invokeLater(new AsyncTask(OEMBED, listeners) {
             @Override

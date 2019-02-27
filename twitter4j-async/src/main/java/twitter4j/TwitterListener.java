@@ -49,6 +49,8 @@ public interface TwitterListener {
 
     void retweetedStatus(Status retweetedStatus);
 
+    void unRetweetedStatus(Status retweetedStatus);
+
     void gotOEmbed(OEmbed oembed);
 
     void lookedup(ResponseList<Status> statuses);

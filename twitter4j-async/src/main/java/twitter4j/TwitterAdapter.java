@@ -71,6 +71,10 @@ public class TwitterAdapter implements TwitterListener {
     }
 
     @Override
+    public void unRetweetedStatus(Status retweetedStatus) {
+    }
+
+    @Override
     public void gotOEmbed(OEmbed oembed) {
     }
 
