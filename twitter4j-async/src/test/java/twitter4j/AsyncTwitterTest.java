@@ -538,6 +538,12 @@ class AsyncTwitterTest extends TwitterTestBase implements TwitterListener {
     }
 
     @Override
+    public void unRetweetedStatus(Status unretweetedStatus) {
+        this.status = unretweetedStatus;
+        notifyResponse();
+    }
+
+    @Override
     public void gotOEmbed(OEmbed oembed) {
         this.oembed = oembed;
         notifyResponse();
